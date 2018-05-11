@@ -1,0 +1,47 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class ClaseModelo {
+	
+	static ClaseVista objVista;
+
+	public static int numeroAleatorio(){
+		int num;
+		num= (int)((100-1)*Math.random() + 1);
+		return num;
+	}
+	public static int insertarNumero()throws Exception{
+		Scanner sc=new Scanner(System.in);
+		int numale=0;
+		try{
+			numale=sc.nextInt();
+		}catch(InputMismatchException e){
+			JOptionPane.showMessageDialog(null, "Introduce solo numeros, no letras");
+		}
+		
+		return numale;
+	}
+
+
+	public static void mayorMenor(int numale, int numusu)throws Exception{
+		int cont=0;
+		if(numusu<numale){
+			JOptionPane.showMessageDialog(null, "El numero es mayor");
+		}else if(numusu>numale){
+			JOptionPane.showMessageDialog(null, "El numero es menor");
+		}
+		if(cont>=1){
+			JOptionPane.showMessageDialog(null, "Introduce otro numero");
+		}
+		if(numusu==numale){
+			JOptionPane.showMessageDialog(null, "Has acertado");		
+		}
+
+	}
+	public void setClaseVista(ClaseVista objVista) {
+		ClaseModelo.objVista=objVista;
+		
+	}
+}
