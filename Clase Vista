@@ -1,0 +1,107 @@
+import javax.swing.JButton; 
+import javax.swing.JFrame; 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.*;
+import java.awt.event.WindowEvent;
+
+
+public class ClaseVista extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+//	public JFrame frame;
+//	private JPanel windowContent;
+
+//	public static final Object ClasePreferirias = "";
+
+	Container menuJuegos = null;
+	Container juegoNumeros = null;
+	Container juegoPreferir = null;
+	JTextField insertar = null; 
+	JLabel etiquetaNumero1 = null; 
+	JLabel etiquetaNumero2 = null;
+	JLabel etiquetaResultado = null; 
+	JButton Numeros = null;
+	JButton Preferencias= null;
+	JButton Introducir= null;
+	JButton A= null;
+	JButton B= null;
+	JButton Atras= null;
+
+	public ClaseVista() {
+//		frame = new JFrame("acierta");
+//		windowContent = new JPanel();
+		menuJuegos = getContentPane(); 
+		
+		
+		setTitle("Menu Juegos"); 
+		setLayout(new FlowLayout()); 
+		setSize(250,100);
+
+		etiquetaNumero1 = new JLabel("¿a que prefrieres jugar?"); 
+		Numeros = new JButton("Numeros");
+		Preferencias = new JButton("Preferencias");
+
+
+		menuJuegos.add(etiquetaNumero1); 
+		menuJuegos.add(Preferencias);
+		menuJuegos.add(Numeros);
+//		editarFrame(frame);
+
+		setVisible(true);
+		}
+//	private void editarFrame(JFrame _frame) {
+//        _frame.setContentPane(windowContent);
+//        _frame.pack();
+//        _frame.setResizable(false);
+//        _frame.setVisible(true);
+//        _frame.setLocationRelativeTo(null);
+//    }
+	
+	public void ClaseNumeros(){
+		juegoNumeros = getContentPane(); 
+		setTitle("Acertar Numeros"); 
+		setLayout(new FlowLayout()); 
+		setSize(300,300);
+		insertar = new JTextField("",10);
+
+		etiquetaNumero2 = new JLabel("Introduce un numero del 1 al 100"); 
+		Introducir = new JButton("Introducir");
+		Atras = new JButton("Menu Principal");
+		
+	
+
+		menuJuegos.add(etiquetaNumero2);
+		menuJuegos.add(insertar);
+		menuJuegos.add(Introducir);
+		menuJuegos.add(Atras);
+
+		
+		
+		setVisible(true);
+	}
+//	public void ClasePreferirias(String texto){
+//		juegoPreferir = getContentPane(); 
+//		setTitle("Acertar Numeros"); 
+//		setLayout(new FlowLayout()); 
+//		setSize(400,400);
+//		
+//
+//		etiquetaNumero2 = new JLabel("que preferirias esto o esto?"); 
+//		A = new JButton("A");
+//		A = new JButton("B");
+//	
+//
+//		
+//		menuJuegos.add(A);
+//		menuJuegos.add(B);
+//
+//		
+//		
+//		setVisible(true);
+//	}
+//	public void editarFrame(){
+//		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+//	}
+}
