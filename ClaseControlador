@@ -1,0 +1,60 @@
+import java.awt.event.ActionEvent; 
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+
+
+public class ClaseControlador implements ActionListener {
+
+	ClaseModelo objModelo = null;
+	ClaseVista objVista = null;
+
+	public ClaseControlador(ClaseVista objVista, ClaseModelo objModelo) throws Exception{ 
+        this.objModelo = objModelo; 
+        this.objVista = objVista; 
+        actionListener(this); 
+        objModelo.setClaseVista(this.objVista);
+    }
+
+
+	@Override 
+	public void actionPerformed(ActionEvent objEvento) { 
+		try {
+			int numale,a;
+			String numusu=null;
+			if (objEvento.getSource() == objVista.Numeros) {
+				objVista.ClaseNumeros(); 
+				ClaseVista vt = new ClaseVista();
+				vt.setVisible(false);
+				this.objVista.insertar.setText(numusu);
+				 
+				a=Integer.parseInt(numusu);
+				numale=objModelo.numeroAleatorio();
+				a=objModelo.insertarNumero();
+				objModelo.mayorMenor(numale, a);
+				
+			}
+//			if (objEvento.getSource() == ClaseVista.ClasePreferirias) {
+//				objVista.ClaseNumeros(); 
+//				ClaseVista vt = new ClaseVista();
+//				vt.setVisible(false);
+//				this.objVista.insertar.setText(numusu);
+//				 
+//				a=Integer.parseInt(numusu);
+//				numale=objModelo.numeroAleatorio();
+//				a=objModelo.insertarNumero();
+//				ClaseModelo.mayorMenor(numale, a);
+//				
+//			}
+		}
+		catch(Exception objExcepcion) {
+			objExcepcion.printStackTrace();
+		}
+	}
+	public void actionListener(ActionListener escuchador) {
+		objVista.Preferencias.addActionListener(escuchador);	
+		objVista.Numeros.addActionListener(escuchador);	
+		objVista.insertar.addActionListener(escuchador);
+		objVista.Atras.addActionListener(escuchador);
+	}
+}
