@@ -1,0 +1,10 @@
+
+public class ClasePrincipal {
+
+	public static void main(String args[]) throws Exception{
+		ClaseModelo modelo = new ClaseModelo(); 
+		ClaseVista vista = new ClaseVista();
+
+		new ClaseControlador(vista, modelo); 
+	} 
+}
