@@ -1,107 +1,51 @@
+import java.awt.Container; 
+import java.awt.FlowLayout; 
 import javax.swing.JButton; 
 import javax.swing.JFrame; 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JLabel; 
 import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.WindowEvent;
-
-
+/**
+ * Esta clase es donde se programa la parte de donde se ve la parte visual del programa
+ * 
+ *
+ */
 public class ClaseVista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-//	public JFrame frame;
-//	private JPanel windowContent;
-
-//	public static final Object ClasePreferirias = "";
-
-	Container menuJuegos = null;
-	Container juegoNumeros = null;
-	Container juegoPreferir = null;
-	JTextField insertar = null; 
-	JLabel etiquetaNumero1 = null; 
-	JLabel etiquetaNumero2 = null;
-	JLabel etiquetaResultado = null; 
-	JButton Numeros = null;
-	JButton Preferencias= null;
-	JButton Introducir= null;
-	JButton A= null;
-	JButton B= null;
-	JButton Atras= null;
-
+/**
+ * Aqui es donde se crea todo lo que vamos a utilicar despues, contenedores(ventanas),
+ * cajas de texto, etiquetas y botones botones
+ */
+	Container bloqueContenedor = null; 			//ventana que se ve
+	JTextField cajaDeTextoResultado = null; 	//donde se ve lo que se le pide al usuario
+	JTextField cajaDeTextoNumero1 = null;  		//introduce el usuario el numero
+	JLabel etiquetaNumero1 = null; 				//donde le indica al usuario donde meter el dato
+	JButton botonSubmit = null;					//el boton de interactuacion
+/**
+ * en este Metodo constructor es donde se definen todas las caracteristicas de todo lo que se ve en la ventana
+ */
 	public ClaseVista() {
-//		frame = new JFrame("acierta");
-//		windowContent = new JPanel();
-		menuJuegos = getContentPane(); 
-		
-		
-		setTitle("Menu Juegos"); 
+		bloqueContenedor = getContentPane(); 
+		setTitle("Acierta el numero"); 
 		setLayout(new FlowLayout()); 
-		setSize(250,100);
+		setSize(420,300);
 
-		etiquetaNumero1 = new JLabel("¿a que prefrieres jugar?"); 
-		Numeros = new JButton("Numeros");
-		Preferencias = new JButton("Preferencias");
+		cajaDeTextoResultado = new JTextField("INTRODUCE UN NUERMO ENTRE 1 Y 10", 35); 
+		cajaDeTextoResultado.setEnabled(false);
+		etiquetaNumero1 = new JLabel("Numero: "); 
+		cajaDeTextoNumero1 = new JTextField("", 20); 
 
 
-		menuJuegos.add(etiquetaNumero1); 
-		menuJuegos.add(Preferencias);
-		menuJuegos.add(Numeros);
-//		editarFrame(frame);
+		botonSubmit = new JButton("Submit");
 
-		setVisible(true);
-		}
-//	private void editarFrame(JFrame _frame) {
-//        _frame.setContentPane(windowContent);
-//        _frame.pack();
-//        _frame.setResizable(false);
-//        _frame.setVisible(true);
-//        _frame.setLocationRelativeTo(null);
-//    }
-	
-	public void ClaseNumeros(){
-		juegoNumeros = getContentPane(); 
-		setTitle("Acertar Numeros"); 
-		setLayout(new FlowLayout()); 
-		setSize(300,300);
-		insertar = new JTextField("",10);
+/*
+ * Parte donde se añaden las cosas a la ventana
+ */
+		bloqueContenedor.add(cajaDeTextoResultado);		
+		bloqueContenedor.add(etiquetaNumero1); 
+		bloqueContenedor.add(cajaDeTextoNumero1); 
+		bloqueContenedor.add(botonSubmit);
 
-		etiquetaNumero2 = new JLabel("Introduce un numero del 1 al 100"); 
-		Introducir = new JButton("Introducir");
-		Atras = new JButton("Menu Principal");
-		
-	
-
-		menuJuegos.add(etiquetaNumero2);
-		menuJuegos.add(insertar);
-		menuJuegos.add(Introducir);
-		menuJuegos.add(Atras);
-
-		
-		
-		setVisible(true);
+		setVisible(true); //Parte donde se define que si se ve
 	}
-//	public void ClasePreferirias(String texto){
-//		juegoPreferir = getContentPane(); 
-//		setTitle("Acertar Numeros"); 
-//		setLayout(new FlowLayout()); 
-//		setSize(400,400);
-//		
-//
-//		etiquetaNumero2 = new JLabel("que preferirias esto o esto?"); 
-//		A = new JButton("A");
-//		A = new JButton("B");
-//	
-//
-//		
-//		menuJuegos.add(A);
-//		menuJuegos.add(B);
-//
-//		
-//		
-//		setVisible(true);
-//	}
-//	public void editarFrame(){
-//		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-//	}
 }
