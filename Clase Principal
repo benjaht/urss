@@ -1,4 +1,12 @@
+/**
 
+ * Esta clase trara de juntar todas las clases y interactuen entre si 
+
+ * @author: URSS
+
+ * @version: 16/05/2018
+
+ */
 public class ClasePrincipal {
 
 	public static void main(String args[]) throws Exception{
