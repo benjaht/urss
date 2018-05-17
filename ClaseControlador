@@ -1,60 +1,66 @@
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
 
-
+/**
+ * Clase donde se llaman a los metodos
+ * Donde se utilizan los eventos
+ */
 public class ClaseControlador implements ActionListener {
+
+    /**
+
+
+     * @param asignamos las clases a atributos
+     * @param num y contador
+
+     */
 
 	ClaseModelo objModelo = null;
 	ClaseVista objVista = null;
+	int num;
+	int contador=0; //se asigna aqui el contador porque solo se utiliza para todo el programa
+	
+	public ClaseControlador(ClaseVista objVista, ClaseModelo objModelo) {
+		this.objModelo = objModelo; 
+		this.objVista = objVista; 
+		actionListener(this); // Escuchador para el botón
+		num = (int)((100-1)*Math.random() + 1); //Constructor para la serie de números aleatorios
 
-	public ClaseControlador(ClaseVista objVista, ClaseModelo objModelo) throws Exception{ 
-        this.objModelo = objModelo; 
-        this.objVista = objVista; 
-        actionListener(this); 
-        objModelo.setClaseVista(this.objVista);
-    }
+	}
 
 
 	@Override 
 	public void actionPerformed(ActionEvent objEvento) { 
 		try {
-			int numale,a;
-			String numusu=null;
-			if (objEvento.getSource() == objVista.Numeros) {
-				objVista.ClaseNumeros(); 
-				ClaseVista vt = new ClaseVista();
-				vt.setVisible(false);
-				this.objVista.insertar.setText(numusu);
-				 
-				a=Integer.parseInt(numusu);
-				numale=objModelo.numeroAleatorio();
-				a=objModelo.insertarNumero();
-				objModelo.mayorMenor(numale, a);
-				
+			boolean acertado=false;
+
+			String numero1 = this.objVista.cajaDeTextoNumero1.getText(); 
+
+			
+			acertado = objModelo.acertarNumero(numero1, num);
+			contador++;
+			objVista.cajaDeTextoNumero1.setText("");
+
+			if(acertado==true){
+				JOptionPane.showMessageDialog(null, "Lo has intentado "+contador+" veces");
+				System.exit(0); //Para que cierre del programa
 			}
-//			if (objEvento.getSource() == ClaseVista.ClasePreferirias) {
-//				objVista.ClaseNumeros(); 
-//				ClaseVista vt = new ClaseVista();
-//				vt.setVisible(false);
-//				this.objVista.insertar.setText(numusu);
-//				 
-//				a=Integer.parseInt(numusu);
-//				numale=objModelo.numeroAleatorio();
-//				a=objModelo.insertarNumero();
-//				ClaseModelo.mayorMenor(numale, a);
-//				
-//			}
+
+ 
+
+
 		}
-		catch(Exception objExcepcion) {
-			objExcepcion.printStackTrace();
+		catch(Exception e) {
+			e.equals(objModelo);	//excepcion de comparacion
 		}
 	}
+	/**
+	 * parte donde se acctivan la funcion de escuchar los eventos de Listener
+	 * @param escuchador
+	 */
 	public void actionListener(ActionListener escuchador) {
-		objVista.Preferencias.addActionListener(escuchador);	
-		objVista.Numeros.addActionListener(escuchador);	
-		objVista.insertar.addActionListener(escuchador);
-		objVista.Atras.addActionListener(escuchador);
+		objVista.botonSubmit.addActionListener(escuchador);
+		objVista.cajaDeTextoNumero1.addActionListener(escuchador);
 	}
 }
