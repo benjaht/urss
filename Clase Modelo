@@ -1,47 +1,37 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
-
+/**
+ * Esta case defina los metodos utilizados en el programa
+*/
 public class ClaseModelo {
+
+	/**
+	 * Este metodo es la cual te dice si el numero es mayor, menor o has acertado
+	 * Devuelve un boolean para cuando hayas acertado ser true y termine el proceso
+	 */
+	public boolean acertarNumero(String n1, int num) {
+		boolean acertado = false;
+		int numero1;
+		numero1 = Integer.parseInt(n1);
+		if(numero1<1 || numero1>100){
+		
 	
-	static ClaseVista objVista;
-
-	public static int numeroAleatorio(){
-		int num;
-		num= (int)((100-1)*Math.random() + 1);
-		return num;
-	}
-	public static int insertarNumero()throws Exception{
-		Scanner sc=new Scanner(System.in);
-		int numale=0;
-		try{
-			numale=sc.nextInt();
-		}catch(InputMismatchException e){
-			JOptionPane.showMessageDialog(null, "Introduce solo numeros, no letras");
-		}
-		
-		return numale;
-	}
-
-
-	public static void mayorMenor(int numale, int numusu)throws Exception{
-		int cont=0;
-		if(numusu<numale){
+		}else
+		if(numero1<num){
 			JOptionPane.showMessageDialog(null, "El numero es mayor");
-		}else if(numusu>numale){
-			JOptionPane.showMessageDialog(null, "El numero es menor");
-		}
-		if(cont>=1){
-			JOptionPane.showMessageDialog(null, "Introduce otro numero");
-		}
-		if(numusu==numale){
-			JOptionPane.showMessageDialog(null, "Has acertado");		
-		}
 
-	}
-	public void setClaseVista(ClaseVista objVista) {
-		ClaseModelo.objVista=objVista;
-		
+
+		}else if(numero1>num){
+			JOptionPane.showMessageDialog(null, "El numero es menor");
+
+
+		}else{
+			JOptionPane.showMessageDialog(null, "Has acertado.");
+
+
+			acertado = true;
+		}
+		return acertado;
+
+
 	}
 }
